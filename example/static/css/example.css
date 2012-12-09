@@ -1,0 +1,63 @@
+body { 
+  background:#ffffff none repeat scroll 0 0; 
+  color:#000000;
+  font-family:"lucida grande",tahoma,verdana,sans-serif;
+  font-size:12px;
+  margin:0;
+  padding:0;
+  text-align:left;
+}
+
+#content {
+  margin:0 auto;
+  width:964px;
+  position:relative;
+}
+
+
+#header {
+  padding-top: 30px;
+  background-image: url("/img/nav-shadow.png");
+  background-position: 0 47px;
+  background-repeat: no-repeat;
+  height:78px;
+}
+
+#logo {
+  text-align:left:
+  width: 174px;
+}
+
+#serviceList td {
+  padding: 10px;
+  border:1px solid gray;
+}
+
+#serviceList td .serviceCell {
+  padding: 30px 10px 10px 10px;
+  text-align:center;
+  position:relative;
+  width:80px;
+  height:70px;  
+}
+
+.minus {
+  position:absolute;
+  top:5px;
+  right:5px;
+}
+
+.hasProfile {
+  background-color:#ccff99;
+}
+
+#friends tr td {
+  height:50px;
+  padding: 10px;
+  border:1px solid gray;
+}
+
+.friendImage {
+  max-width: 32px;
+  max-height: 32px;
+}
