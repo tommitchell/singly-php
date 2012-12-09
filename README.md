@@ -1,7 +1,10 @@
 # Singly PHP SDK
 
-## Alpha
-Be aware that the Singly PHP Client is in an alpha state.  Class and method names are subject to change.  As we work to make the sdk better we are not concerned with breaking backwards compatibility for now.  This will change in the future as the sdk becomes more stable.
+## Beta
+Be aware that the Singly PHP Client is in an beta state.  Class and method names are subject to change.  As we work to make the sdk better we are not concerned with breaking backwards compatibility for now.  This will change in the future as the sdk becomes more stable.
+
+## Source Code
+This Singly PHP SDK is open source and is [hosted on Github](https://github.com/Singly/singly-php).
 
 ## Overview
 This repository contains two different projects.  The first is the Singly PHP client library.  This is a library project you can include into your PHP apps that makes it easy to use the Singly API.  The second in an example project that show usage of the Singly client in a web app.
