@@ -1,5 +1,5 @@
 {
     "require": {
-        "guzzle/guzzle": "*"
+        "guzzle/guzzle": "3.0.5"
     }
 }
