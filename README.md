@@ -29,17 +29,17 @@ You will need to register with Singly to get your client id and client secret. T
 Composer is a dependency manager. It provides an easy way to mange the downloading of dependencies for the SDK.
 
 1. Install Composer - http://getcomposer.org/
-2. Go to the sdk root directory. 
+2. Go to the sdk root directory.
 3. Run `composer install`. This downloads the SDK dependencies into a vendor folder in the SDK root directory.
 
 ## Setting up a Virtual Host
-To run the example you will need to include the SDk folder in your PHP source path and setup the example folder as the root of your webapp. An easy way to do this is through an Apache virtual host. Here is an example of an Apache virtual host setup on a Linux system.
+To run the example you will need to include the SDK folder in your PHP source path and setup the example folder as the root of your webapp. An easy way to do this is through an Apache virtual host. Here is an example of an Apache virtual host setup on a Linux system.
 
     <VirtualHost *:80>
       ServerName singlyphp
       ErrorLog /var/log/apache2/singlyphp-error.log
       CustomLog /var/log/apache2/singlyphp-access.log combined
-      DocumentRoot "/your/path/to/singly-php/example" 
+      DocumentRoot "/your/path/to/singly-php/example"
       <Directory "/your/path/to/singly-php/example">
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
@@ -72,16 +72,16 @@ The `SinglyClient.php` is the main client class you will use within your applica
     if (empty($singlyClient)) {
       $singlyClient = new SinglyClient(
           CLIENT_ID,
-          CLIENT_SECRET, 
+          CLIENT_SECRET,
           new InMemorySinglyAccountStorage());
       $_SESSION["singlyClient"] = $singlyClient;
     }
 
     $services = $singlyClient->doGetApiRequest("/services");
-    ... 
+    ...
     use the data in your app
 
-Usually a custom `SinglyAccountStorage.php` implementation would need to be created to save accounts and access tokens to a db or other permanent storage. 
+Usually a custom `SinglyAccountStorage.php` implementation would need to be created to save accounts and access tokens to a db or other permanent storage.
 
 Calling other methods in the SDK would require authenticating and getting an access token first.
 
