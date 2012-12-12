@@ -31,6 +31,7 @@ Composer is a dependency manager. It provides an easy way to mange the downloadi
 1. Install Composer - http://getcomposer.org/
 2. Go to the sdk root directory.
 3. Run `composer install`. This downloads the SDK dependencies into a vendor folder in the SDK root directory.
+4. The PHP SDK requires php 5.3.3 or greater and Guzzle 3.0.5 or greater.  This is enforced by composer.
 
 ## Setting up a Virtual Host
 To run the example you will need to include the SDK folder in your PHP source path and setup the example folder as the root of your webapp. An easy way to do this is through an Apache virtual host. Here is an example of an Apache virtual host setup on a Linux system.
@@ -60,19 +61,18 @@ You would also need to edit your hosts file, `/etc/hosts` on nix systems, to poi
 4. Open your browser to http://singlyphp/ to use the web application.
 
 ## Calling the SinglyClient
-The `SinglyClient.php` is the main client class you will use within your application to authenticate and make API calls.  Here is an example of how you would use the SinglyClient.
+The `SinglyClient.php` is the main client class you will use within your application to authenticate and make API calls.  Here is an example of how you would use the SinglyClient.  Using composer you will want to include the `vendor/autoload.php` once in your application.  Then the SinglyClient can be included through the use package statement.
 
-    require_once("SinglyClient.php");
-    require_once("InMemorySinglyAccountStorage.php");
+    require_once("vendor/autoload.php");
 
-    define("CLIENT_ID", "your_client_id");
-    define("CLIENT_SECRET", "your_client_secret");
+    use Singly/Client/SinglyClient;
+    use Singly/Client/InMemorySinglyAccountStorage;
 
     $singlyClient = $_SESSION["singlyClient"];
     if (empty($singlyClient)) {
       $singlyClient = new SinglyClient(
-          CLIENT_ID,
-          CLIENT_SECRET,
+          "your_singly_client_id",
+          "your_singly_client_secret",
           new InMemorySinglyAccountStorage());
       $_SESSION["singlyClient"] = $singlyClient;
     }

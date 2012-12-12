@@ -1,7 +1,7 @@
 <?php
-require_once("vendor/autoload.php");
-require_once("SinglyUtils.php");
+namespace Singly\Client;
 
+use Singly\Utils\SinglyUtils;
 use Guzzle\Http\Client;
 
 /**
@@ -108,7 +108,7 @@ use Guzzle\Http\Client;
     }
 
     // create the authentication url
-    return createSinglyURL("/oauth/authenticate", $queryParams);
+    return SinglyUtils::createSinglyURL("/oauth/authenticate", $queryParams);
   }
 
   /**
@@ -133,7 +133,7 @@ use Guzzle\Http\Client;
     $postParams["code"] = $authCode;
 
     // create the access token url
-    $accessTokenUrl = createSinglyURL("/oauth/access_token");
+    $accessTokenUrl = SinglyUtils::createSinglyURL("/oauth/access_token");
 
     try {
 
@@ -172,7 +172,7 @@ use Guzzle\Http\Client;
   public function doGetApiRequest($apiEndpoint, $queryParams) {
 
     // create the API endpoint url
-    $getApiCallUrl = createSinglyURL($apiEndpoint, $queryParams);
+    $getApiCallUrl = SinglyUtils::createSinglyURL($apiEndpoint, $queryParams);
 
     // call the api endpoint with a GET method
     try {
@@ -208,8 +208,8 @@ use Guzzle\Http\Client;
 
     // create the API endpoint url
     $postApiCallUrl = !empty($queryParams)
-      ? createSinglyURL($apiEndpoint, $queryParams) : 
-        createSinglyURL($apiEndpoint);
+      ? SinglyUtils::createSinglyURL($apiEndpoint, $queryParams) : 
+        SinglyUtils::createSinglyURL($apiEndpoint);
 
     try {
 
@@ -252,8 +252,8 @@ use Guzzle\Http\Client;
 
     // create the API endpoint url
     $postApiCallUrl = !empty($queryParams)
-      ? createSinglyURL($apiEndpoint, $queryParams) : 
-        createSinglyURL($apiEndpoint);
+      ? SinglyUtils::createSinglyURL($apiEndpoint, $queryParams) : 
+        SinglyUtils::createSinglyURL($apiEndpoint);
 
     // create the http client and request
     $httpClient = new Client();

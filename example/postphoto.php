@@ -1,9 +1,10 @@
 <?php
-require_once("SinglyClient.php");
-require_once("InMemorySinglyAccountStorage.php");
+require_once("vendor/autoload.php");
+
+use Singly\Client\SinglyClient;
+use Singly\Client\InMemorySinglyAccountStorage;
 
 session_start();
-
 
 $singlyClient = $_SESSION["singlyClient"];
 
@@ -44,7 +45,7 @@ if ($_FILES["photo1"]) {
       <p>This example shows how to use the /types/photos API to post a photo to 
       Facebook.  You must already be authenticated with Facebook for this example
       to work.  Select one or more photos and click Upload.</p>
-      <form name="uploadForm" action="postphoto" method="post" enctype="multipart/form-data">  
+      <form name="uploadForm" action="postphoto.php" method="post" enctype="multipart/form-data">  
       <div>        
         <label for="photo1">Choose A Photo:</label>        
         <input type="file" name="photo1" />    

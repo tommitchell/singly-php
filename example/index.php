@@ -1,17 +1,16 @@
 <?php
-require_once("SinglyClient.php");
-require_once("InMemorySinglyAccountStorage.php");
+require_once("vendor/autoload.php");
 
-define("CLIENT_ID", "your_client_id");
-define("CLIENT_SECRET", "your_client_secret");
+use Singly\Client\SinglyClient;
+use Singly\Client\InMemorySinglyAccountStorage;
 
 session_start(); 
 
 $singlyClient = $_SESSION["singlyClient"];
 if (empty($singlyClient)) {
   $singlyClient = new SinglyClient(
-      CLIENT_ID,
-      CLIENT_SECRET, 
+      "your_singly_client_id",
+      "your_singly_client_secret", 
       new InMemorySinglyAccountStorage());
   $_SESSION["singlyClient"] = $singlyClient;
 }
