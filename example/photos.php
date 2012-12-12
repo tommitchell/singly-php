@@ -35,7 +35,7 @@ foreach ($photoNodes as $photoNode) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Singly PHP Friends Example</title>
+    <title>Singly PHP Photos Example</title>
     <link rel="stylesheet" type="text/css" href="/static/css/example.css" />
   </head>
   <body>

@@ -3,7 +3,7 @@
  * The contract for storing and retrieving Singly access tokens.
  * 
  * An application that uses the Singly API, such as a web application, will be
- * storing many access tokens, usually one per account.  This interface allows
+ * storing many access tokens, usually one per account. This interface allows
  * developers to create their own implementations to store and retrieve those
  * Singly access tokens on a per account basis.
  * 
@@ -29,7 +29,7 @@ interface SinglyAccountStorage {
    * 
    * @param account The account to check for an access token.
    * 
-   * @return True if an access token has been stored.  False otherwise.
+   * @return True if an access token has been stored. False otherwise.
    */
   public function hasAccessToken($account);
   

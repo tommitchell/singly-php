@@ -6,8 +6,8 @@ require_once("SinglyAccountStorage.php");
  * tokens in memory.  
  * 
  * This class does not persist access tokens beyond the lifetime of the 
- * application.  It is the default SinglyAccountStorage for the 
- * SinglyServiceImpl class.  Most applications will want to create 
+ * application. It is the default SinglyAccountStorage for the 
+ * SinglyServiceImpl class. Most applications will want to create 
  * their own implementation and override the default.
  */
 class InMemorySinglyAccountStorage
