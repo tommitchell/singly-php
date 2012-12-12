@@ -16,8 +16,9 @@ if (empty($account) || !$singlyClient->isAuthenticated($account)) {
 
 $accountStorage = $singlyClient->getAccountStorage();
 $accessToken = $accountStorage->getAccessToken($account);
+$uploaded = false;
 
-if ($_FILES["photo1"]) {
+if (isset($_FILES["photo1"])) {
 
   // create the query parameters
   $postParams = array();

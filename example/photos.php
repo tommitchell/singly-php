@@ -23,7 +23,7 @@ $queryParams["access_token"] = $accessToken;
 
 // get the number of photos
 $typeNodes = $singlyClient->doGetApiRequest("/types", $queryParams);
-$numPhotos = $typesNodes["photos"];
+$numPhotos = isset($typesNodes["photos"]) ? $typesNodes["photos"] : NULL;
 
 // get the photos
 $photos = array();
