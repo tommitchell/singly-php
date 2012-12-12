@@ -1,5 +1,5 @@
 <?php
-require_once("SinglyAccountStorage.php"); 
+namespace Singly\Client;
 
 /**
  * A simple SinglyAccountStorage implementation that stores access
@@ -15,18 +15,30 @@ class InMemorySinglyAccountStorage
 
   private $accounts = array();
 
+  /**
+   * {@inheritDoc}
+   */
   public function saveAccessToken($account, $accessToken) {
     $this->accounts[$account] = $accessToken;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public function hasAccessToken($account) {
     return array_key_exists($account, $this->accounts);    
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public function getAccessToken($account) {
     return $this->accounts[$account];
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public function removeAccessToken($account) {
     unset($this->accounts[$account]);
   }

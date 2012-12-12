@@ -1,4 +1,6 @@
 <?php
+namespace Singly\Client;
+
 /**
  * The contract for storing and retrieving Singly access tokens.
  * 

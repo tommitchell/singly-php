@@ -1,9 +1,10 @@
 <?php
-require_once("SinglyClient.php");
-require_once("InMemorySinglyAccountStorage.php");
+require_once("vendor/autoload.php");
+
+use Singly\Client\SinglyClient;
+use Singly\Client\InMemorySinglyAccountStorage;
 
 session_start();
-
 
 $singlyClient = $_SESSION["singlyClient"];
 

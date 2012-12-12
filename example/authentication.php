@@ -1,6 +1,8 @@
 <?php
-require_once("SinglyClient.php");
-require_once("InMemorySinglyAccountStorage.php");
+require_once("vendor/autoload.php");
+
+use Singly\Client\SinglyClient;
+use Singly\Client\InMemorySinglyAccountStorage;
 
 session_start();
 
@@ -67,10 +69,12 @@ ksort($services);
 $profiles = array();
 $queryParams = array();
 $queryParams["access_token"] = $accessToken;
-$profileNodes = $singlyClient->doGetApiRequest("/profiles", $queryParams);
-foreach ($profileNodes as $profileName => $profileNode) {
-  if ($profileName != "id") {
-    $profiles["$profileName"] = $profileNode[0];
+if (!empty($accessToken)) {
+  $profileNodes = $singlyClient->doGetApiRequest("/profiles", $queryParams);
+  foreach ($profileNodes as $profileName => $profileNode) {
+    if ($profileName != "id") {
+      $profiles["$profileName"] = $profileNode[0];
+    }
   }
 }
 
@@ -79,7 +83,7 @@ $authenticated = $singlyClient->isAuthenticated($account);
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Singly PHP Example Authentication</title>
+    <title>Singly PHP Authentication Example</title>
     <link rel="stylesheet" type="text/css" href="/static/css/example.css" />
   </head>
   <body>
