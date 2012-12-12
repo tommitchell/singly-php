@@ -8,7 +8,7 @@ use Guzzle\Http\Client;
  * A client that handles authentication and requests to the Singly API.
  * 
  * An application must be authenticated and retrieve an access token for an 
- * account before it can make Singly API calls for that account.  The process
+ * account before it can make Singly API calls for that account. The process
  * for authentication has three steps.
  * 
  * <ol>
@@ -17,14 +17,14 @@ use Guzzle\Http\Client;
  *   against which the user is authenticating.</li>
  *   <li>Once the user authenticates the web page is redirected back to the
  *   redirectUrl in the application.  A <strong>code</strong> parameter is 
- *   parsed from the redirectUrl.  This is the authentication code.</li>
+ *   parsed from the redirectUrl. This is the authentication code.</li>
  *   <li>The application calls the completeAuthentication(String, String)
  *   method with the authentication code and account to store the access token
  *   for that account.</li>
  * </ol>
  * 
  * Once an access token is stored for an account, calls can be made to the API
- * using the doXApiRequest methods and passing in an account.  The access token
+ * using the doXApiRequest methods and passing in an account. The access token
  * will be retrieved behind the scenes and passed to all API calls.
  * 
  * @see https://singly.com/docs/api
@@ -59,16 +59,16 @@ use Guzzle\Http\Client;
    * 
    * The first time a user authenticates through Singly for a given application
    * a unique Singly account token is generated and stored during the 
-   * ompleteAuthentication(String) method.  As a user authenticates 
+   * ompleteAuthentication(String) method. As a user authenticates 
    * with more services, those services are linked to the same Singly account.
    * 
    * If this is the first time your user is authenticating with Singly for your
-   * application you won't have an account, set it to null.  Otherwise pass in
+   * application you won't have an account, set it to null. Otherwise pass in
    * the Singly account token that was previously generated so the new services
    * can be properly linked to the same account.
    *  
    * Some services require extra parameters such as scope and flag to be passed
-   * in.  Use the authExtra input to pass in the parameters by name.
+   * in. Use the authExtra input to pass in the parameters by name.
    * 
    * @param account The Singly account for which to authenticate.
    * @param service The service to authenticate against.

@@ -11,7 +11,7 @@ function getSinglyHost() {
 }
 
 /**
- * Creates a url using the base singly api url, the path, and the query
+ * Creates a url using the base Singly api url, the path, and the query
  * parameters specified.
  * 
  * The url is assumed to be in UTF-8 format.  The query parameters are
@@ -39,7 +39,7 @@ function createURL($scheme, $host, $path, $queryParams) {
 }
 
 /**
- * Creates a url using the base singly api url, the path, and the query
+ * Creates a url using the base Singly api url, the path, and the query
  * parameters specified.
  * 
  * The query parameters are not required.
