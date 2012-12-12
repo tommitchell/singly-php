@@ -6,14 +6,23 @@ use Singly\Client\InMemorySinglyAccountStorage;
 
 session_start();
 
-$singlyClient = $_SESSION["singlyClient"];
-$account = $_SESSION["account"];
-$accountStorage = $singlyClient->getAccountStorage();
-$accessToken = $accountStorage->getAccessToken($account);
+$accessToken = NULL;
+$singlyClient = NULL;
+$account = NULL;
 
-$authCode = $_REQUEST["code"];
-$service = $_REQUEST["service"];
-$profile = $_REQUEST["profile"];
+if (isset($_SESSION["singlyClient"])) {
+
+  $singlyClient =$_SESSION["singlyClient"];
+  if (isset($_SESSION["account"])) {
+    $account = $_SESSION["account"];
+    $accountStorage = $singlyClient->getAccountStorage();
+    $accessToken = $accountStorage->getAccessToken($account);
+  }
+}
+
+$authCode = isset($_REQUEST["code"]) ? $_REQUEST["code"] : NULL;
+$service = isset($_REQUEST["service"]) ? $_REQUEST["service"] : NULL;
+$profile = isset($_REQUEST["profile"]) ? $_REQUEST["profile"] : NULL;
 
 
 if (!empty($service)) {
@@ -46,7 +55,7 @@ elseif (!empty($authCode)) {
 
 // get services
 $services = array();
-$serviceNodes = $singlyClient->doGetApiRequest("/services");
+$serviceNodes = $singlyClient->doGetApiRequest("/services", NULL);
 foreach ($serviceNodes as $key => $value) {
 
   $authService = array();
@@ -54,10 +63,12 @@ foreach ($serviceNodes as $key => $value) {
   $authService["name"] = $value["name"];
   $icons = array();
 
-  foreach ($value["icons"] as $iconNode) {
-    $iconKey = $iconNode["height"] . "x" . $iconNode["width"];
-    $source = $iconNode["source"];
-    $icons[$iconKey] = $source;
+  if (isset($value["icons"])) {
+    foreach ($value["icons"] as $iconNode) {
+      $iconKey = $iconNode["height"] . "x" . $iconNode["width"];
+      $source = $iconNode["source"];
+      $icons[$iconKey] = $source;
+    }
   }
   $authService["icons"] = $icons;
 
@@ -107,9 +118,9 @@ $authenticated = $singlyClient->isAuthenticated($account);
         for ($i = 0; $i < count($servicesValues); $i++) {
           $service = $servicesValues[$i];
           $serviceId = $service["id"];
-          $serviceIcon = $service["icons"]["32x32"];
+          $serviceIcon = isset($service["icons"]["32x32"]) ? $service["icons"]["32x32"] : NULL;
           $serviceName = $service["name"];
-          $profile = $profiles[$service["id"]];
+          $profile = isset($profiles[$serviceId]) ? $profiles[$serviceId] : NULL;
           ?>
           <td <?php if (!empty($profile)) { echo "class=\"hasProfile\""; } ?>>
             <div class="serviceCell">

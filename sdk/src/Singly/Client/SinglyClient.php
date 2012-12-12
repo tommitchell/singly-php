@@ -133,7 +133,7 @@ use Guzzle\Http\Client;
     $postParams["code"] = $authCode;
 
     // create the access token url
-    $accessTokenUrl = SinglyUtils::createSinglyURL("/oauth/access_token");
+    $accessTokenUrl = SinglyUtils::createSinglyURL("/oauth/access_token", NULL);
 
     try {
 
@@ -207,9 +207,7 @@ use Guzzle\Http\Client;
   public function doPostApiRequest($apiEndpoint, $queryParams, $postParams) {
 
     // create the API endpoint url
-    $postApiCallUrl = !empty($queryParams)
-      ? SinglyUtils::createSinglyURL($apiEndpoint, $queryParams) : 
-        SinglyUtils::createSinglyURL($apiEndpoint);
+    $postApiCallUrl = SinglyUtils::createSinglyURL($apiEndpoint, $queryParams);
 
     try {
 
@@ -251,9 +249,7 @@ use Guzzle\Http\Client;
     $postParams, $postFiles) {
 
     // create the API endpoint url
-    $postApiCallUrl = !empty($queryParams)
-      ? SinglyUtils::createSinglyURL($apiEndpoint, $queryParams) : 
-        SinglyUtils::createSinglyURL($apiEndpoint);
+    $postApiCallUrl = SinglyUtils::createSinglyURL($apiEndpoint, $queryParams);
 
     // create the http client and request
     $httpClient = new Client();
